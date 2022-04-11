@@ -6,6 +6,7 @@ import re
 p_npq = re.compile(r'\["(?P<name>\D+(?!is))"\] = \{(?P<prc_qty>.*?),\}')
 p_pq = re.compile(r'\["\d+"\] = "(?P<prc>\d+):(?P<qty>\d+)"')
 p_dir = re.compile(r'Auctionator_(\d{2})(\d{2})(\d{4})[.]lua')
+p_token = re.compile(r'"access_token":"(?P<token>\w*?)"')
 
 def price_quantity(s):              # input for s is supposed to be 'hist_join'(refer to lua_read.py)
     item_list = p_npq.findall(s)    # item_list[0] =                                     
@@ -28,5 +29,5 @@ def ah_file(files_in_dir):
 
 def output_cname(input_f):
     tmp = p_dir.match(input_f)
-    result = "AH" + '_' + tmp.group(1) + tmp.group(2) + tmp.group(3) + '.txt'
+    result = "LUA" + '_' + '2021' + tmp.group(1) + tmp.group(2) + '_' + tmp.group(3) + '.txt'
     return result
