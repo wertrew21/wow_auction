@@ -1,6 +1,9 @@
 # lua_read.py
 # Read file and sort out the file data getting rid of space, tap, newline.
 
+### <PLAN> better to look into a way to get data in 'csv' form directly from 'Auctionator_mmddHHMM.lua'
+###       and not to use this python module.
+
 def read_file(file):
     f = open(file, 'r')
     lines = f.readlines()

@@ -4,3 +4,4 @@ $ cat .gitignore
 /lua
 /API
 /__pycache__
+test.*
