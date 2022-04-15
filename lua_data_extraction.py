@@ -9,7 +9,7 @@ dir = os.path.join(os.getcwd(), 'lua/')
 files_dir = os.listdir(dir)
 files_auct = lua_re.match_file(files_dir, lua_re.p_auct)
 
-labels = ['NAME', 'QUANTITY', 'AVERAGE', 'TOP_PRICE', 'BTM_PRICE']
+labels = ['NAME', 'QTY', 'AVG', 'TOP', 'BTM']
 for file in files_auct:
     hist = read_file(dir + file)                # 'hist' means AUCTIONATOR_PRICING_HISTORY in 'Auctionator_mmddHHMM.lua'.
     dict_npq_tmp = lua_re.price_quantity(hist)

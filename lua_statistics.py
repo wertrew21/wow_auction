@@ -62,8 +62,8 @@ class Statistics:
                 if prc >= prc_top: prc_top = prc
                 if prc <= prc_btm: prc_btm = prc
 
-            total = {'NAME':name, 'QUANTITY':total_qty, 'AVERAGE':total_avg,
-                    'TOP_PRICE':prc_top, 'BTM_PRICE':prc_btm}
+            total = {'NAME':name, 'QTY':total_qty, 'AVG':total_avg,
+                    'TOP':prc_top, 'BTM':prc_btm}
             total_arr.append(total)
         return total_arr
 

@@ -9,6 +9,12 @@ p_auct = re.compile(r'Auctionator_(\d{2})(\d{2})(\d{4})[.]lua')
 p_npq = re.compile(r'\["(?P<name>\D+(?!is))"\] = \{(?P<prc_qty>.*?),\}')
 p_pq = re.compile(r'\["\d+"\] = "(?P<prc>\d+):(?P<qty>\d+)"')
 p_token = re.compile(r'"access_token":"(?P<token>\w*?)"')
+p_date = re.compile(r'LUA[_](?P<yyyymmdd>\d+)[_]\d+')
+
+def get_time(file, p):
+    m = p.match(file)
+    yyyymmdd = m.group(1)
+    return yyyymmdd
 
 def p_ext(ext):
     pattern = re.compile(r'(?P<name>.*)[.]' + ext)

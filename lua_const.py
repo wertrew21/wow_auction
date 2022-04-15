@@ -1,5 +1,6 @@
 # lua_const.py
 
+### [PLAN] Add 'Adamantite Ore' in <list> 'item_select'
 item_select = ['마나 엉겅퀴', '테로열매', '악몽의 덩굴',
                '불의 근원', '어둠의 근원', '마나의 근원', '생명의 근원', '물의 근원']
 kr_to_en = {'마나 엉겅퀴':'Mana Thistle', '테로열매':'Terocone', '악몽의 덩굴':'Nightmare Vine',

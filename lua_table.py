@@ -8,13 +8,13 @@ import lua_re
 from lua_translation import trans_ko2en
 
 def csv2table(fullpath):
-    tmp_result = []
+    result_tmp = []
     with open(fullpath, 'r', encoding='utf-8') as f:
         reader = csv.reader(f)
         for line in reader:
-            tmp_result.append(line)
+            result_tmp.append(line)
 
-    result = trans_ko2en(tmp_result)
+    result = trans_ko2en(result_tmp)
 
     fig, ax = plt.subplots(1, 1)
     column_labels = result.pop(0)
@@ -32,7 +32,7 @@ def csv2table(fullpath):
     #plt.show()
     dir, file = os.path.split(fullpath)
     name_fig = lua_re.chg_ext(file, 'png')
-    fullpath = os.path.join(dir, name_fig)
+    fullpath = os.path.join(dir, name_fig.replace('LUA', 'LUA_TABLE'))
     plt.savefig(fullpath)
     plt.close('all')
 

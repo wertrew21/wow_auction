@@ -1,7 +1,11 @@
 $ cat .gitignore
 *.ign
 *.ign.*
+
+test.*
+api*
+
 /lua
 /API
+/img
 /__pycache__
-test.*
