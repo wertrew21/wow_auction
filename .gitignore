@@ -3,9 +3,8 @@ $ cat .gitignore
 *.ign.*
 
 test.*
-api*
 
 /lua
-/API
+/api
 /img
 /__pycache__
