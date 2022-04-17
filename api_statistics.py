@@ -1,4 +1,8 @@
-import api_re
+# api_statistics.py
+# Getting a name of item, the price and the quantity, then return simple statistics value
+# such as total quantity, average price, top(most expensive) price, bottom(cheapest) price.
+# Also, this module removes outliers which mean values extremely out of normal range.
+
 from api_read import read_file
 
 class Statistics:
@@ -20,10 +24,6 @@ class Statistics:
 
             tmp.sort()
 
-#            med = 0
-#            if n % 2 == 0: med = (tmp[n/2 - 1] + tmp[n/2]) / 2
-#            else: med = tmp[(n-1) / 2]
-
             i1, i3 = 0, 0
             q1, q3 = 0, 0
             l_outlier, u_outlier = 0, 0
@@ -42,6 +42,7 @@ class Statistics:
                     tmp2.append((prc, qty))
 
             self.npq[name] = tmp2
+
 
     def total(self): 
         total_arr = []

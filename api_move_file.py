@@ -1,14 +1,17 @@
 # api_move_file.py
+# Copy output files to '.../wow_auction/output/'
+# In addition, when '.../wow_auction/api/' has too many files, this module controls the number.
 
 import os, shutil
 import api_re
 
-def cp_file(dir, file):
-    dir_push = dir + 'push/'
-    fullpath_push = dir_push + file
-    files_dir_push = os.listdir(dir_push)
-    if file not in files_dir_push:
-        shutil.copy(dir + file, fullpath_push)
+def cp_file(file):
+    dir = os.getcwd()
+    dir_api = os.path.join(dir, 'api/')
+    dir_output = os.path.join(dir, 'output/')
+    files_dir_output = os.listdir(dir_output)
+    if file not in files_dir_output:
+        shutil.copy(os.path.join(dir_api, file), os.path.join(dir_output, file))
 
 
 dir = os.path.join(os.getcwd(), 'api/')

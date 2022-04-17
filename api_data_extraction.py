@@ -1,7 +1,8 @@
 # api_data_extraction.py
-# # 'rand' means the type number of random inchantments.
+# Turn original API data, which is hard to read, into csv format table.
+# To control the number of files, a few items are selected to be shown.
 
-import os, csv, shutil
+import os, csv
 
 import api_re, api_move_file
 from api_const import *
@@ -21,7 +22,6 @@ for file in files_api:
     hist = read_file(dir + file)            # 'hist' means the information containing id, total price, quantity 
                                             #  in 'API_yyyymmdd_HHMM.txt'.
 
-
     dict_ipq_tmp = api_re.price_quantity(hist)
     dict_npq = {}
     for item in item_select:
@@ -29,7 +29,8 @@ for file in files_api:
         en = kr_to_en.get(item)
         dict_npq[en] = dict_ipq_tmp[id]
     
-    stats = Statistics(dict_npq)        # dict_npq = {'Mana Thistle':[(prc0, qty0), (prc1, qty1), ...], ...}
+    stats = Statistics(dict_npq)        
+                       # dict_npq = { 'Mana Thistle' : [(prc0, qty0), (prc1, qty1), ... ], ... }
     stats.rm_outlier()
     total_stats = stats.total()
 
@@ -46,4 +47,4 @@ for file in files_api:
     except IOError:
         print("I/O error")
 
-    api_move_file.cp_file(dir, file)
+    api_move_file.cp_file(file)

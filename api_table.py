@@ -1,4 +1,10 @@
 # api_table.py
+# Create table from csv file. The label(=attribute) is below.
+#
+#           NAME   QTY   AVG   TOP   BTM      
+#
+# which means, 'name of item', 'quantity', 'average price', 'top(most expensive) price', 'bottom(cheapest) price' in the order above.
+
 import csv, os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -21,10 +27,8 @@ def csv2table(fullpath):
     ax.table(cellText=df.values,
              colLabels=df.columns,
              colColours=['yellow']*len(df.columns),
-    #         rowLabels=[i+1 for i in range(len(result))],
-    #         rowColours=['yellow']*8,
              loc="center")
-    #plt.show()
+
     dir, file = os.path.split(fullpath)
     name_fig = api_re.chg_ext(file, 'csv', 'png')
     fullpath = os.path.join(dir, name_fig.replace('API_CSV', 'API_TABLE'))
@@ -42,4 +46,4 @@ for file in files_csv:
     fullpath = dir + file
     csv2table(fullpath)
 
-    api_move_file.cp_file(dir, file_check)
+    api_move_file.cp_file(file_check)

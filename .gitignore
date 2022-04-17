@@ -4,8 +4,9 @@ $ cat .gitignore
 *.ign.*
 lua*
 test.*
-
-/lua
-/api
-/img
-/__pycache__
+*/
+!output/
+#/lua
+#/api
+#/img
+#/__pycache__

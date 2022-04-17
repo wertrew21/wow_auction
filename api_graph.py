@@ -10,7 +10,6 @@ dir = os.path.join(os.getcwd(), 'api/')
 files_dir = os.listdir(dir)
 files_csv = api_re.match_file(files_dir, api_re.p_ext('csv'))
 
-### [PLAN] Sort the code below out as 'function_name(fullpath)'.
 timeseries_tmp = {}
 for file in files_csv:
     fullpath = dir + file
@@ -25,10 +24,10 @@ for file in files_csv:
                 line.append(mmddHHMM)
 
     labels = stats_arr.pop(0)
-#   stats_arr = [ ['Mana Thistle', QTY, AVG, ... , mmddHHMM],
-#                 ['Terocone', QTY, AVG,   ...   , mmddHHMM],
-#                 [          ...           ]     ...     ]
-#   labels = ['NAME', 'QTY', 'AVG', 'TOP', 'BTM']
+             # stats_arr = [ ['Mana Thistle', QTY, AVG, ... , mmddHHMM],
+             #               ['Terocone', QTY, AVG,   ...   , mmddHHMM],
+             #                  ...   [              ...              ] ]
+    # labels = ['NAME', 'QTY', 'AVG', 'TOP', 'BTM']
 
     for arr in stats_arr:
         name = arr[0]
@@ -44,9 +43,9 @@ for file in files_csv:
 
 for key in timeseries_tmp.keys():
     timeseries_tmp[key].sort()
-#       timeseries_tmp = { 'Mana Thistle' : [[mmdd0, QTY0, AVG0, ... ], [mmdd1, QTY1, AVG1, ... ], ... ],
-#                      'Terocone': [[ ... ], ... ], ... }
-#       * 'mmdd[\d]' is sorted in ascending order as [\d] increases.
+    # timeseries_tmp = { 'Mana Thistle' : [[mmdd0, QTY0, AVG0, ... ], [mmdd1, QTY1, AVG1, ... ], ... ],
+    #                        'Terocone' : [[        ...            ],                 ...            ],  ...  }
+    #       * 'mmdd[\d]' is sorted in ascending order as [\d] increases.
 
 timeseries = {}
 #keys = timeseries_tmp.keys()
@@ -59,31 +58,25 @@ for key in timeseries_tmp:
     for stats in stats_arr:
         stats = list(map(int,stats))
         y_stats_arr.append(stats)
-#       y_stats_arr = [[mmdd0, QTY0, AVG0, ... ], [mmdd1, QTY1, AVG1, ... ], ... ]
+        # y_stats_arr = [[mmdd0, QTY0, AVG0, ... ], [mmdd1, QTY1, AVG1, ... ], ... ]
 
     dict_stats = {}
     for (i, label) in enumerate(labels_date_stats):
         dict_stats[label] = []
         for y_stats in y_stats_arr:
             dict_stats[label].append(y_stats[i])
-#           dict_stats = {'DATE':[mmdd0, mmdd1, ... ], 'QTY':[QTY0, QTY1, ... ], 'AVG':[AVG0, AVG1, ... ], ... }
+            # dict_stats = {'DATE':[mmdd0, mmdd1, ... ], 'QTY':[QTY0, QTY1, ... ], 'AVG':[AVG0, AVG1, ... ], ... }
 
     timeseries[key] = dict_stats
-#   timeseries = {'Mana Thistle' : {'QTY':[QTY0, QTY1, ... ], 'AVG':[AVG0, AVG1, ... ], ... },
-#                     Terocone'  : {'QTY':[QTY0, QTY1, ... ], 'AVG':[AVG0, AVG1, ... ], ... },
-#                       ...      : {                          ...                           } }
+    # timeseries = {'Mana Thistle' : {'QTY':[QTY0, QTY1, ... ], 'AVG':[AVG0, AVG1, ... ], ... },
+    #                   Terocone'  : {'QTY':[QTY0, QTY1, ... ], 'AVG':[AVG0, AVG1, ... ], ... },
+    #                     ...      : {                          ...                           } }
 
-#   The example of choosing X, Y axes data:
-#       'AVG' of 'Mana Thistle';   y_strtype = timeseries['Mana Thistle']['AVG']    <-- Y
-#                                  y = list(map(int, y_strtype))
-#       'DATE' of 'Mana Thistle';  timeseries['Mana Thistle']['DATE']  <-- X
+    #   The example of choosing X, Y axes data:
+    #       'AVG' of 'Mana Thistle';   y_strtype = timeseries['Mana Thistle']['AVG']    <-- Y
+    #                                  y = list(map(int, y_strtype))
+    #       'DATE' of 'Mana Thistle';  timeseries['Mana Thistle']['DATE']  <-- X
 
-
-################# Plot graph ###################
-### [PLAN] 1. Add index and let each index shows date.
-###        2. Iterate the code below
-###        3. Save graph as 'LUA_GRAPH_yyyymmdd_HHMM.png'
-###        4. (Additional) Violin plot
 
 time_now = time.strftime("%Y%m%d_%H%M")
 
@@ -156,5 +149,5 @@ for key in keys:
     file = 'API_GRAPH_{}_[{}].png'.format(time_now, key)
     new_img.save(os.path.join(dir, file), 'PNG')
 
-    api_move_file.cp_file(dir, file)
+    api_move_file.cp_file(file)
 os.system('rm {}tmp*'.format(dir))
