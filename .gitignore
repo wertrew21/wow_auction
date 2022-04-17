@@ -1,7 +1,8 @@
 $ cat .gitignore
+.gitignore
 *.ign
 *.ign.*
-
+lua*
 test.*
 
 /lua

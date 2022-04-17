@@ -1,9 +1,9 @@
 # api_data_extraction.py
 # # 'rand' means the type number of random inchantments.
 
-import os, csv
+import os, csv, shutil
 
-import api_re
+import api_re, api_move_file
 from api_const import *
 from api_read import read_file
 from api_statistics import Statistics
@@ -34,7 +34,8 @@ for file in files_api:
     total_stats = stats.total()
 
     file_tmp = api_re.chg_ext(file, 'txt', 'csv')
-    fullpath = dir + file_tmp.replace('API', 'API_CSV')
+    file = file_tmp.replace('API', 'API_CSV')
+    fullpath = dir + file
 
     try:
         with open(fullpath, 'w') as f:
@@ -44,3 +45,5 @@ for file in files_api:
                 writer.writerow(row)
     except IOError:
         print("I/O error")
+
+    api_move_file.cp_file(dir, file)

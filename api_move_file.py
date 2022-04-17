@@ -1,7 +1,14 @@
 # api_move_file.py
 
-import os
+import os, shutil
 import api_re
+
+def cp_file(dir, file):
+    dir_push = dir + 'push/'
+    fullpath_push = dir_push + file
+    files_dir_push = os.listdir(dir_push)
+    if file not in files_dir_push:
+        shutil.copy(dir + file, fullpath_push)
 
 
 dir = os.path.join(os.getcwd(), 'api/')

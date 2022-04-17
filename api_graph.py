@@ -1,9 +1,9 @@
 # api_graph.py
 # Plot time series graph with prices of item in Y-axis.
 
-import os, csv, time
+import os, csv, time, shutil
 from PIL import Image
-import api_re
+import api_re, api_move_file
 import matplotlib.pyplot as plt
 
 dir = os.path.join(os.getcwd(), 'api/')
@@ -152,6 +152,9 @@ for key in keys:
     new_img = Image.new('RGB', (img_graph.size[0], img_graph.size[1]))
     new_img.paste(img_graph, (0, 0))
     new_img.paste(framed_img, (3, 3))
-    new_img.save('{}API_GRAPH_{}_[{}].png'.format(dir, time_now, key), 'PNG')
 
+    file = 'API_GRAPH_{}_[{}].png'.format(time_now, key)
+    new_img.save(os.path.join(dir, file), 'PNG')
+
+    api_move_file.cp_file(dir, file)
 os.system('rm {}tmp*'.format(dir))

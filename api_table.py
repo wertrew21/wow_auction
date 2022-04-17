@@ -2,7 +2,7 @@
 import csv, os
 import pandas as pd
 import matplotlib.pyplot as plt
-import api_re
+import api_re, api_move_file
 
 def csv2table(fullpath):
     result = []
@@ -41,3 +41,5 @@ for file in files_csv:
         continue
     fullpath = dir + file
     csv2table(fullpath)
+
+    api_move_file.cp_file(dir, file_check)
