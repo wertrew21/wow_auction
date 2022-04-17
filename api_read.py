@@ -1,4 +1,5 @@
 # api_read.py
+# This module truncates API data to contain necessary information.
 
 def read_file(file):
     f = open(file, 'r')
