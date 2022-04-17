@@ -4,7 +4,7 @@
 filedir="/root/wow_auction"
 timenow=$(date "+%Y%m%d_%H:%M")
 
-#cd $filedir
+cd $filedir
 python getData.py
 python api_data_extraction.py
 python api_table.py
