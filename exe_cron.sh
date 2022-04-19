@@ -14,3 +14,5 @@ python api_move_file.py
 git add .
 git commit -m"Automatically pushed. @ ${timenow}"
 git push
+
+printf '\n'
