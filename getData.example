@@ -2,9 +2,9 @@
 #     Those are there only to distinguish inputs inside brackets from other words.
 
 # This is an example to get AH data from Blizzard data API.
-# If you want to get AH data from other region, server, AH, refer to just very below.
-# https://{region}.api.blizzard.com/data/wow/connected-realm/{server}/auctions/{AH variable}?namespace={dynamic-classic-kr&locale=kr_KR}&locale={region_REGION}
-# In case of TBC, KOREA, Lokholar, HORDE AH:
+# If you want to get AH data from other region, server, AH, refer to this link below and change variables.
+# https://{(1) region }.api.blizzard.com/data/wow/connected-realm/{(2) server }/auctions/{(3) AH variable }?namespace=dynamic-{(4) WoW version }&locale={(5) region_REGION }
+# In case of TBC, KOREA, Lokholar, HORDE AH :
 # https://kr.api.blizzard.com/data/wow/connected-realm/4419/auctions/6?namespace=dynamic-classic-kr&locale=kr_KR
 # ===============================================================================================
 
