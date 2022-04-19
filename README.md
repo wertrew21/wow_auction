@@ -1,5 +1,5 @@
 # wow_auction
-# Korea, Server : [Rokhola]
+# Korea, [Rokholar]
 # 
 This python modules get API data from WoW auction data from Game data API.
 In addition it carries out data pre-process (such as removing abnormal values)
